@@ -38,8 +38,38 @@ public class Main {
 
     // Método para crear un nuevo artículo
     public static void crearArticulo() {
-        System.out.print("ID: ");
-        int id = sc.nextInt(); sc.nextLine();     // Leer ID
+        boolean idOk=false;
+        boolean idVal1=false;
+        boolean idVal2=false;
+        int id;
+        do{
+            System.out.print("ID: ");
+            id = sc.nextInt(); sc.nextLine();     // Leer ID
+            if ( id < 100000 || id > 999999 ) {
+                System.out.println("Error! ID debe tener 6 digitos! Intente nuevamente");
+                idVal1 = false;
+            } else {
+                idVal1 = true;
+            }
+            if (lista.isEmpty()) {
+                idVal2 = true;
+            }
+            for (ArticuloClase a : lista) {
+                System.out.println("id: "+a.getId());
+                if (a.getId() == id) {
+                    System.out.println("Error! ID ya esta en uso! Intente nuevamente");
+                    idVal2 = false;
+                } else {
+                    idVal2 = true;
+                }            
+            }
+            //System.out.println("idVal1: "+idVal1);
+            //System.out.println("idVal2: "+idVal2);
+            if (idVal1 && idVal2) {
+                idOk = true;
+            }
+        } while (idOk==false); //Mientras que el ID sea igual a alguno ya existente, va a seguir pidiendo uno
+                                                  //Al igual que el ID tenga 6 digitos
         System.out.print("Nombre: ");
         String nombre = sc.nextLine();            // Leer nombre
         System.out.print("Precio: ");
