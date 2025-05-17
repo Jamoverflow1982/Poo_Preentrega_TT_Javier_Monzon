@@ -52,7 +52,11 @@ public class ArticuloClase {
     // Método para mostrar la información del artículo
     public void mostrar() {
         // Este método puede ser sobrescrito por subclases (polimorfismo)
-        System.out.println("ID: " + id + " | Nombre: " + nombre + " | Precio: $" + precio);
-        System.out.println("Descripcion: " + descripcion);
+        System.out.println("ID: " + id + " | Nombre: " + nombre + " | Precio: $" + precio + " | Descripcion: " + descripcion);
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + " | Producto: " + nombre + " | Precio: $" + precio + " | Descripcion: " + descripcion;
     }
 }
